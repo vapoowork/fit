@@ -22,7 +22,7 @@ namespace CodeBlogFitness.BL.Model {
         /// <summary>
         /// Вес.
         /// </summary>
-        public double Weigth { get; set; }
+        public double Weight { get; set; }
         /// <summary>
         /// Рост.
         /// </summary>
@@ -38,12 +38,12 @@ namespace CodeBlogFitness.BL.Model {
         /// <param name="name"> Имя. </param>
         /// <param name="gender"> Пол. </param>
         /// <param name="birthDate"> Дата рождения. </param>
-        /// <param name="weigth"> Вес. </param>
+        /// <param name="weight"> Вес. </param>
         /// <param name="height"> Рост. </param>
         public User(string name, 
                     Gender gender, 
                     DateTime birthDate, 
-                    double weigth, 
+                    double weight, 
                     double height) {
             #region Проверка входных данных
             if (string.IsNullOrWhiteSpace(name)) {
@@ -56,8 +56,8 @@ namespace CodeBlogFitness.BL.Model {
                 throw new ArgumentException("Невозможная дата рождения",nameof(birthDate));
 
             }
-            if (weigth <= 0) {
-                throw new ArgumentException("Вес не может быть меньше либо равен нулю",nameof(weigth));
+            if (weight <= 0) {
+                throw new ArgumentException("Вес не может быть меньше либо равен нулю",nameof(weight));
             }
             if (height <= 0) {
                 throw new ArgumentException("Рос не может быть меньше или равен нулю",nameof(height));            
@@ -66,7 +66,7 @@ namespace CodeBlogFitness.BL.Model {
             Name = name;
             Gender = gender;
             BirthDate = birthDate;
-            Weigth = weigth;
+            Weight = weight;
             Height = height;
         }
         public User(string name)  {
