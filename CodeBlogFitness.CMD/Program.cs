@@ -1,18 +1,22 @@
 ﻿using CodeBlogFitness.BL.Controller;
 using CodeBlogFitness.BL.Model;
 using System;
+using System.Globalization;
+using System.Resources;
 
 namespace CodeBlogFitness.CMD {
     class Program {
         static void Main(string[] args) {
-            Console.WriteLine("Вас приветствует приложение CodeBlogFitness");
-            Console.WriteLine("Введите имя пользователя");
+            var culture = CultureInfo.GetCultureInfo("en-us");
+            var resourceManager = new ResourceManager("CodeBlogFitness.CMD.Languages.Messages", typeof(Program).Assembly);
+            Console.WriteLine(resourceManager.GetString("Hello", culture));
+            Console.WriteLine(resourceManager.GetString("EnterName", culture));
             var name = Console.ReadLine();
 
             var userController = new UserController(name);
             var eatingController = new EatingController(userController.CurrentUser);
             if (userController.IsNewUser) {
-                Console.WriteLine("Введите пол: ");
+                Console.WriteLine(resourceManager.GetString("EnterGender", culture));
                 var genger = Console.ReadLine();
                 var birthDate = ParseDateTime();
                 var weight = ParseDouble("вес");
